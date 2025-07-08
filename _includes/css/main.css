@@ -4,8 +4,12 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+/* Add Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 body {
     overflow-x: hidden;
+    font-family: 'Bebas Neue', 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 p {
@@ -32,8 +36,9 @@ h4,
 h5,
 h6 {
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Bebas Neue', Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 700;
+    letter-spacing: 1px;
 }
 
 hr.star-light,
@@ -68,11 +73,11 @@ hr.star-light:after {
 }
 
 hr.star-primary {
-    border-color: #{{ site.color.secondary }};
+    border-color: #{{ site.color.secondary-dark }}; /* Using darker yellow for better contrast */
 }
 
 hr.star-primary:after {
-    color: #{{ site.color.secondary }};
+    color: #{{ site.color.secondary-dark }}; /* Using darker yellow for better contrast */
     background-color: #fff;
 }
 
@@ -80,15 +85,35 @@ hr.star-primary:after {
     margin: 0 auto;
 }
 
+/* Gradient overlay for header */
 header {
     text-align: center;
     color: #fff;
     background: #{{ site.color.primary }};
+    position: relative;
+    overflow: hidden;
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, 
+                rgba(0, 0, 0, 0.6) 0%, 
+                rgba(17, 17, 17, 0.4) 30%, 
+                rgba(17, 17, 17, 0.2) 70%, 
+                rgba(17, 17, 17, 0) 100%);
+    pointer-events: none;
+    z-index: 1;
 }
 
 header .container {
     padding-top: 100px;
     padding-bottom: 50px;
+    position: relative;
+    z-index: 2;
 }
 
 header img {
@@ -105,8 +130,10 @@ header .intro-text .name {
 }
 
 header .intro-text .skills {
-    font-size: 1.25em;
+    font-size: 1.5em;
     font-weight: 300;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
 }
 
 @media(min-width:768px) {
@@ -120,7 +147,9 @@ header .intro-text .skills {
     }
 
     header .intro-text .skills {
-        font-size: 1.75em;
+        font-size: 2.25em;
+        font-family: 'Bebas Neue', sans-serif;
+        letter-spacing: 2px;
     }
 }
 
@@ -150,8 +179,9 @@ header .intro-text .skills {
 
 .navbar {
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Bebas Neue', Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .navbar a:focus {
@@ -171,18 +201,88 @@ header .intro-text .skills {
     border: 0;
 }
 
+.navbar-default .navbar-nav>.active>a {
+    background-color: #{{ site.color.secondary-dark }} !important;
+    color: #111111 !important; /* Ensuring the active menu item has dark text */
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>.active>a:hover {
+    color: #{{ site.color.secondary }} !important;
+    background-color: #111111 !important; /* Dark background on hover for better contrast */
+}
+
+/* Navbar customization */
+.navbar-default {
+    background-color: #111111 !important; /* Dark background */
+    border-color: #111111;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a {
+    color: #fff !important; /* White text for better contrast on dark background */
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff; /* White bars for mobile toggle */
+}
+
+.navbar-logo {
+    display: inline-block;
+    height: 25px;
+    margin-right: 10px;
+    vertical-align: middle;
+    margin-top: -5px;
+}
+
+@media(min-width:768px) {
+    .navbar-logo {
+        height: 30px;
+    }
+}
+
+/* Make active nav items yellow on dark background */
+.navbar-default .navbar-nav>.active>a {
+    background-color: #111111 !important; /* Keep dark background */
+    color: #e7f900 !important; /* Yellow active text */
+    border-bottom: 2px solid #e7f900; /* Yellow underline for active item */
+    box-sizing: border-box;
+}
+
+/* Hover state for navbar items */
+.navbar-default .navbar-nav>li>a:hover {
+    color: #e7f900 !important; /* Yellow text on hover */
+    background-color: transparent !important;
+    border-bottom: 2px solid #e7f900; /* Yellow underline on hover */
+}
+
 section {
     padding: 100px 0;
 }
 
 section h2 {
-    margin: 0;
+    margin: 0 0 10px 0;
     font-size: 3em;
 }
 
 section.success {
-    color: #fff;
-    background: #{{ site.color.primary }};
+    color: #111111; /* Changed from white to dark gray for better contrast on yellow background */
+    background: #{{ site.color.secondary }};
+}
+
+/* Add spacing after section headings */
+.heading-spacer {
+  height: 30px;
+  width: 100%;
+  display: block;
+  clear: both;
+}
+
+/* Ensure good spacing in mobile views */
+@media(max-width:767px) {
+  .heading-spacer {
+    height: 20px;
+  }
 }
 
 @media(max-width:767px) {
@@ -279,11 +379,35 @@ section.success {
     }
   } */
 
+/* Portfolio section text color adjustments */
+#portfolio h2,
+#portfolio h4,
+#portfolio p {
+  color: #111111; /* Dark text color for better readability */
+}
+
+.portfolio-flex-item h4 {
+  color: #111111; /* Ensure service titles are dark */
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* Ensure modal content text is dark and readable */
+.portfolio-modal .modal-content {
+  color: #111111;
+}
+
+.portfolio-modal .modal-content h2,
+.portfolio-modal .modal-content h4,
+.portfolio-modal .modal-content p {
+  color: #111111;
+}
+
 .btn-outline {
     margin-top: 15px;
-    border: solid 2px #fff;
+    border: solid 2px #111111; /* Changed from white to dark gray */
     font-size: 20px;
-    color: #fff;
+    color: #111111; /* Changed from white to dark gray */
     background: 0 0;
     transition: all .3s ease-in-out;
 }
@@ -292,9 +416,23 @@ section.success {
 .btn-outline:focus,
 .btn-outline:active,
 .btn-outline.active {
-    border: solid 2px #fff;
-    color: #{{ site.color.primary }};
-    background: #fff;
+    border: solid 2px #111111; /* Changed from white to dark gray */
+    color: #fff;
+    background: #111111; /* Changed to dark background on hover */
+}
+
+.btn-success {
+    color: #111111 !important; /* Dark text on yellow buttons */
+    background-color: #{{ site.color.secondary }};
+    border-color: #{{ site.color.secondary }};
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+    color: #111111 !important; /* Keep dark text on hover */
+    background-color: #{{ site.color.secondary-dark }};
+    border-color: #{{ site.color.secondary-dark }};
 }
 
 .floating-label-form-group {
@@ -354,7 +492,7 @@ form .row:first-child .floating-label-form-group {
 }
 
 footer {
-    color: #fff;
+    color: #fff; /* Changed to white text for better contrast on dark background */
 }
 
 footer h3 {
@@ -363,7 +501,7 @@ footer h3 {
 
 footer .footer-above {
     padding-top: 50px;
-    background-color: #{{ site.color.secondary }};
+    background-color: #{{ site.color.primary }}; /* Changed to dark color */
 }
 
 footer .footer-col {
@@ -372,18 +510,20 @@ footer .footer-col {
 
 footer .footer-below {
     padding: 25px 0;
-    background-color: #{{ site.color.secondary-dark }};
+    background-color: #{{ site.color.primary }}; /* Changed to dark color */
+    color: #fff; /* Changed to white text for better contrast on dark background */
 }
 
 .btn-social {
     display: inline-block;
     width: 50px;
     height: 50px;
-    border: 2px solid #fff;
+    border: 2px solid #fff; /* Changed to white for contrast on dark background */
     border-radius: 100%;
     text-align: center;
     font-size: 20px;
     line-height: 45px;
+    color: #fff; /* Changed to white for contrast on dark background */
 }
 
 .btn:focus,
@@ -481,4 +621,92 @@ footer .footer-below {
 .modal.fade.in {
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
+}
+
+header .intro-text .skills {
+    font-size: 1.5em;
+    font-weight: 300;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+}
+
+@media(min-width:768px) {
+    header .intro-text .skills {
+        font-size: 2.25em;
+        font-family: 'Bebas Neue', sans-serif;
+        letter-spacing: 2px;
+    }
+}
+
+/* Contact section text color adjustments */
+#contact h2,
+#contact label,
+#contact .control-group p,
+#contact .help-block {
+  color: #111111;
+}
+
+/* Form control styling */
+.floating-label-form-group input,
+.floating-label-form-group textarea {
+  color: #111111;
+}
+
+.floating-label-form-group label {
+  color: #555555;
+}
+
+/* Success message styling */
+#success {
+  color: #111111;
+}
+
+/* Ensure form placeholders are visible */
+::-webkit-input-placeholder {
+  color: #777777 !important;
+}
+::-moz-placeholder {
+  color: #777777 !important;
+}
+:-ms-input-placeholder {
+  color: #777777 !important;
+}
+:-moz-placeholder {
+  color: #777777 !important;
+}
+
+/* Portfolio image size standardization */
+.portfolio-flex-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.portfolio-flex-item .portfolio-link {
+  width: 100%;
+  max-width: 400px; /* Set maximum width */
+  height: 300px; /* Fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: transparent; /* Changed to transparent background */
+  border: none; /* Removed border */
+  margin: 0 auto;
+}
+
+.portfolio-flex-item .portfolio-link img {
+  width: auto;
+  height: auto;
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain; /* Maintain aspect ratio */
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .portfolio-flex-item .portfolio-link {
+    height: 250px; /* Smaller height on mobile */
+  }
 }
