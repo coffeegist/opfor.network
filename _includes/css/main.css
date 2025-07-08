@@ -9,11 +9,14 @@
 
 body {
     overflow-x: hidden;
-    font-family: 'Bebas Neue', 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 p {
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    font-family: 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
 }
 
 p.small {
@@ -493,6 +496,8 @@ form .row:first-child .floating-label-form-group {
 
 footer {
     color: #fff; /* Changed to white text for better contrast on dark background */
+    font-family: 'Bebas Neue', Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 1px;
 }
 
 footer h3 {
@@ -506,6 +511,9 @@ footer .footer-above {
 
 footer .footer-col {
     margin-bottom: 50px;
+    font-family: 'Bebas Neue', Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.2em;
+    letter-spacing: 1px;
 }
 
 footer .footer-below {
