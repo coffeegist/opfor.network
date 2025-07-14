@@ -88,35 +88,15 @@ hr.star-primary:after {
     margin: 0 auto;
 }
 
-/* Gradient overlay for header */
 header {
     text-align: center;
     color: #fff;
     background: #{{ site.color.primary }};
-    position: relative;
-    overflow: hidden;
-}
-
-.gradient-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, 
-                rgba(0, 0, 0, 0.6) 0%, 
-                rgba(17, 17, 17, 0.4) 30%, 
-                rgba(17, 17, 17, 0.2) 70%, 
-                rgba(17, 17, 17, 0) 100%);
-    pointer-events: none;
-    z-index: 1;
 }
 
 header .container {
     padding-top: 100px;
     padding-bottom: 50px;
-    position: relative;
-    z-index: 2;
 }
 
 header img {
